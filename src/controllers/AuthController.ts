@@ -77,7 +77,7 @@ export const logout = async (
 ): Promise<Response> => {
   res.clearCookie("token", {
     httpOnly: true,
-    sameSite: "lax",
+    sameSite: "none",
     secure: process.env.NODE_ENV === "production",
   });
   return res.json({ message: "Logout realizado com sucesso" });
