@@ -11,5 +11,6 @@ CMD ["bun", "run", "dev"]
 
 FROM base AS prod
 RUN bun i
-EXPOSE 8001
 RUN bun run build
+EXPOSE 8001
+CMD ["bun", "run", "start"]
