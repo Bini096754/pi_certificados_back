@@ -1,0 +1,27 @@
+services:
+  api:
+    container_name: certificados_back
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: dev
+    develop:
+      watch:
+        - action: sync
+          target: /app
+          path: .
+        - action: rebuild
+          path: package.json
+    env_file:
+      - .env
+    ports:
+      - "${PORT}:8000"
+    expose:
+      - 8000
+    networks:
+      - certificados_back
+
+networks:
+  certificados_back:
+    name: cert_network
+    external: true
